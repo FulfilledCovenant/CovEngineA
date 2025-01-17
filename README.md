@@ -14,7 +14,7 @@ The descriptions and recommendations in the following table are based on general
 ### Downloading
 
 On the right hand side of the .github page, there should be a release version, click and download the latest one.
-After downloading, run RunRestoreScript.bat to proceed.
+### After downloading, run RunRestoreScript.bat to proceed!!!
 
 ### General Tweaks
 
