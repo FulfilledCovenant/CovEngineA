@@ -3,6 +3,8 @@ Semi-Automated optimizations for improved overall windows 10-11 experience.
 
 ## Tweaks Configuration Overview
 
+**READ CAREFULLY**
+
 *Note:*
 
 The descriptions and recommendations in the following table are based on general use cases, the optimal settings for your system might vary depending on your specific hardware, software, and usage patterns. I've tried to include every tweak and it's aspect, however some tweaks may or may not be on the table.
@@ -12,6 +14,7 @@ The descriptions and recommendations in the following table are based on general
 ### Downloading
 
 On the right hand side of the .github page, there should be a release version, click and download the latest one.
+After downloading, run RunRestoreScript.bat to proceed.
 
 ### General Tweaks
 
