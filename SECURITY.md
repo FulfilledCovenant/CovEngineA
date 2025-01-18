@@ -1,4 +1,4 @@
-# Security Policy
+# Testing Policy
 
 ## VM Tested Versions (Win 10)
 
