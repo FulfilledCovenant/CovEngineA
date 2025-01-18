@@ -131,6 +131,7 @@
     <ClCompile Include="CaterTweaks.cpp" />
     <ClCompile Include="ExtraTweaks.cpp" />
     <ClCompile Include="Entry.cpp" />
+    <ClCompile Include="ExtTweaks\ExtTweaks.cpp" />
     <ClCompile Include="NetTweaks.cpp" />
     <ClCompile Include="PerfTweaks.cpp" />
     <ClCompile Include="PrivTweaks.cpp" />
@@ -143,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="CaterTweaks.h" />
     <ClInclude Include="ExtraTweaks.h" />
+    <ClInclude Include="ExtTweaks\ExtTweaks.h" />
     <ClInclude Include="json\json.hpp" />
     <ClInclude Include="NetTweaks.h" />
     <ClInclude Include="nlohmann\json.hpp" />

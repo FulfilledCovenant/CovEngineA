@@ -48,6 +48,9 @@
     <ClCompile Include="RnBat\RnBat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ExtTweaks\ExtTweaks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RnBat\RnBat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtTweaks\ExtTweaks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

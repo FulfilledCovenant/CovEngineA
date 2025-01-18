@@ -15,6 +15,7 @@
 #include "CaterTweaks.h"
 #include "SvcTweaks.h"
 #include "RnBat/RnBat.h"
+#include "ExtTweaks/ExtTweaks.h"
 #include "nlohmann/json.hpp"
 #pragma comment(lib, "Shlwapi.lib") 
 using json = nlohmann::json;
@@ -50,15 +51,29 @@ int main()
     }
 
     RnBat();
-
+    //
+    //
+    // run batch
+    // point 1 (the start of entry)
+    std::system("restore.bat");
     SimpleTweaks(config);
+    std::system("genPoint.bat");
     ExtraTweaks(config);
+    std::system("genPoint2.bat");
     DoPerfTweaks(config);
+    std::system("genPoint3.bat");
     DoPrivTweaks(config);
+    std::system("genPoint4.bat");
     NetDoTweaks(config);
+    std::system("genPoint5.bat");
     QolTweaks(config);
+    std::system("genPoint6.bat");
     CaterTweaksDo(config);
+    std::system("genPoint7.bat");
     SvcTweaks(config);
+    std::system("genPoint8.bat");
+    ExtTwks(config);
+    std::system("genPoint9.bat");
 
     wchar_t szPath[MAX_PATH];
     if (GetModuleFileNameW(NULL, szPath, ARRAYSIZE(szPath))) {
@@ -72,7 +87,6 @@ int main()
     }
     else {
         std::cerr << "Getting executable path failed!" << std::endl;
-        std::cerr << "Start the power service in services." << std::endl;
     }
     return 0;
 }
