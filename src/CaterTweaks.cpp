@@ -83,7 +83,7 @@ void UltPlan(const json& config) {
 
     HKEY hKey = OpenCKey(HKEY_CURRENT_USER, L"Software\\CaterTweaks", KEY_READ | KEY_WRITE);
     if (!hKey) {
-        std::cerr << "Error opening/creating CaterTweaks registry key" << std::endl;
+        std::cerr << "Opening/creating CaterTweaks registry key failed!" << std::endl;
         return;
     }
     DWORD alreadySet;
@@ -101,7 +101,7 @@ void UltPlan(const json& config) {
 
     DWORD value = 1;
     if (RegSetValueEx(hKey, L"UltimatePowerPlanSet", 0, REG_DWORD, (const BYTE*)&value, sizeof(value)) != ERROR_SUCCESS) {
-        std::cerr << "Error setting UltimatePowerPlanSet registry value" << std::endl;
+        std::cerr << "Setting UltimatePowerPlanSet registry value failed!" << std::endl;
     }
 
     RegCloseKey(hKey);
@@ -150,7 +150,7 @@ void DiskChkTmInc(const json& config) {
     HKEY hKey = OpenCKey(HKEY_LOCAL_MACHINE, L"SYSTEM\\CurrentControlSet\\Control\\Session Manager", KEY_SET_VALUE);
     if (hKey) {
         if (RegSetValueEx(hKey, L"AutoChkTimeOut", 0, REG_DWORD, (const BYTE*)10, sizeof(DWORD)) != ERROR_SUCCESS) {
-            std::cerr << "Error setting AutoChkTimeOut value" << std::endl;
+            std::cerr << "Setting AutoChkTimeOut value failed!" << std::endl;
         }
         RegCloseKey(hKey);
     }

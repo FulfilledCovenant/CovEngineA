@@ -14,13 +14,11 @@
 #include "QolTweaks.h"
 #include "CaterTweaks.h"
 #include "SvcTweaks.h"
+#include "RnBat/RnBat.h"
 #include "nlohmann/json.hpp"
 #pragma comment(lib, "Shlwapi.lib") 
 using json = nlohmann::json;
 
-/// <summary>
-/// Entry point
-/// </summary>
 int main()
 {
     if (!ElavCheck()) {
@@ -30,7 +28,6 @@ int main()
         return 0;
     }
 
-    std::cout << "It is recommended to disable your antivirus software before proceeding, or the process may exit." << std::endl;
     std::cout << "Proceed? y/n - ";
     char choice;
     std::cin >> choice;
@@ -42,44 +39,27 @@ int main()
     if (!ReadConfig(config)) {
         config = DefConfig();
     }
-    //
-    // current config
+
     CurrentConf(config);
-    //
+
     HKEY hKey;
     if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SystemRestore", 0, KEY_SET_VALUE, &hKey) == ERROR_SUCCESS) {
         DWORD dwValue = 0;
         RegSetValueEx(hKey, L"RPGlobalInterval", 0, REG_DWORD, (const BYTE*)&dwValue, sizeof(dwValue));
         RegCloseKey(hKey);
     }
-    //
-    // run batch
-    // point 1 (the start of entry)
-    std::system("restore.bat");
-    // simple tweaks first
-    // ss
+
+    RnBat();
+
     SimpleTweaks(config);
-    std::system("genPoint.bat");
-    // do extra tweaks
-    // addon of "simple"
-    // really just extra
     ExtraTweaks(config);
-    std::system("genPoint2.bat");
     DoPerfTweaks(config);
-    std::system("genPoint3.bat");
     DoPrivTweaks(config);
-    std::system("genPoint4.bat");
     NetDoTweaks(config);
-    std::system("genPoint5.bat");
     QolTweaks(config);
-    std::system("genPoint6.bat");
     CaterTweaksDo(config);
-    std::system("genPoint7.bat");
     SvcTweaks(config);
-    std::system("genPoint8.bat");
-    // path of engine
-    // for dynamic retrivbal
-    // tested
+
     wchar_t szPath[MAX_PATH];
     if (GetModuleFileNameW(NULL, szPath, ARRAYSIZE(szPath))) {
         PathRemoveFileSpecW(szPath);
@@ -87,11 +67,11 @@ int main()
         std::wstring command = L"powershell -ExecutionPolicy Bypass -Command \"$Action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-ExecutionPolicy Bypass -File \\\"" + scriptPath + L"\\\"'; $Trigger = New-ScheduledTaskTrigger -AtLogOn; $Settings = New-ScheduledTaskSettingsSet; $Principal = New-ScheduledTaskPrincipal -UserID 'NT AUTHORITY\\SYSTEM' -LogonType ServiceAccount -RunLevel Highest; Register-ScheduledTask -TaskName 'StartPowerService' -Action $Action -Trigger $Trigger -Principal $Principal -Settings $Settings -Force\"";
         std::string commandNarrow(command.begin(), command.end());
         std::system(commandNarrow.c_str());
-        std::cout << "\nRestarting in 5 seconds...\n";
+        std::cout << "\nRestarting in 5 seconds.\n";
         std::system("shutdown /r /t 5");
     }
     else {
-        std::cerr << "Error getting executable path." << std::endl;
+        std::cerr << "Getting executable path failed!" << std::endl;
     }
     return 0;
 }

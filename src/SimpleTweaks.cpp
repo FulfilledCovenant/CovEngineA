@@ -147,11 +147,23 @@ void LockNo(const json& config) {
     if (config.value("Disable Lock Screen", "NO") != "YES") {
         return;
     }
+    // 1
     HKEY hKey = OpenCKey(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization", KEY_SET_VALUE);
     if (hKey) {
-        
         DWORDSET(hKey, L"NoLockScreen", 1);
         RegCloseKey(hKey);
+    }
+    else {
+        std::cerr << "Could not open registry key for DLS!" << std::endl;
+    }
+    // 2
+    HKEY hKeyGP = OpenCKey(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", KEY_SET_VALUE);
+    if (hKeyGP) {
+        DWORDSET(hKeyGP, L"DisableLockWorkstation", 1); 
+        RegCloseKey(hKeyGP);
+    }
+    else {
+        std::cerr << "DLS 2 failed!" << std::endl;
     }
 }
 

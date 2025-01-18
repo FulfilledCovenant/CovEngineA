@@ -135,6 +135,7 @@
     <ClCompile Include="PerfTweaks.cpp" />
     <ClCompile Include="PrivTweaks.cpp" />
     <ClCompile Include="QolTweaks.cpp" />
+    <ClCompile Include="RnBat\RnBat.cpp" />
     <ClCompile Include="SvcTweaks.cpp" />
     <ClCompile Include="SimpleTweaks.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="PerfTweaks.h" />
     <ClInclude Include="PrivTweaks.h" />
     <ClInclude Include="QolTweaks.h" />
+    <ClInclude Include="RnBat\RnBat.h" />
     <ClInclude Include="SvcTweaks.h" />
     <ClInclude Include="SimpleTweaks.h" />
     <ClInclude Include="Utils.h" />

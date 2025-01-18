@@ -45,6 +45,9 @@
     <ClCompile Include="SvcTweaks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RnBat\RnBat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SvcTweaks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RnBat\RnBat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

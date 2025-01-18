@@ -53,12 +53,12 @@ void ContxtShow(const json& config) {
     HKEY hKey = OpenCKey(HKEY_CURRENT_USER, L"Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32", KEY_SET_VALUE);
     if (hKey) {
         if (RegSetValueEx(hKey, L"", 0, REG_SZ, (const BYTE*)L"", sizeof(L"")) != ERROR_SUCCESS) {
-            std::cerr << "Error setting default value for InprocServer32" << std::endl;
+            std::cerr << "Setting default value for InprocServer32 failed!" << std::endl;
         }
         RegCloseKey(hKey);
     }
     else {
-        std::cerr << "Error opening/creating key: Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32" << std::endl;
+        std::cerr << "Opening/creating key: Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32 failed!" << std::endl;
     }
 }
 
@@ -286,7 +286,7 @@ void WarnSNo(const json& config) {
     if (hKey) {
         
         if (RegSetValueEx(hKey, L"", 0, REG_SZ, (const BYTE*)L"", sizeof(L"")) != ERROR_SUCCESS) {
-            std::cerr << "Error setting default value" << std::endl;
+            std::cerr << "Setting default value failed" << std::endl;
         }
         RegCloseKey(hKey);
     }
@@ -389,12 +389,12 @@ void FExplNo(const json& config) {
     HKEY hKey = OpenCKey(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\HideFileExt\\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}", KEY_SET_VALUE);
     if (hKey) {
         if (RegSetValueEx(hKey, L"", 0, REG_SZ, (const BYTE*)L"", sizeof(L"")) != ERROR_SUCCESS) {
-            std::cerr << "Error setting default value to hide Gallery" << std::endl;
+            std::cerr << "Setting default value to hide Gallery failed!" << std::endl;
         }
         RegCloseKey(hKey);
     }
     else {
-        std::cerr << "Error opening/creating key to hide Gallery" << std::endl;
+        std::cerr << "Opening/creating key to hide Gallery failed!" << std::endl;
     }
 }
 
@@ -465,7 +465,7 @@ void ExtNo(const json& config) {
     HKEY hKey = OpenCKey(HKEY_CLASSES_ROOT, L"CompressedFolder\\ShellEx\\ContextMenuHandlers\\{b8cdcb65-b1bf-4b42-9428-1dfdb7ee92af}", KEY_SET_VALUE);
     if (hKey) {
         if (RegSetValueEx(hKey, L"", 0, REG_SZ, (const BYTE*)L"", sizeof(L"")) != ERROR_SUCCESS) {
-            std::cerr << "Error setting default value" << std::endl;
+            std::cerr << "Setting default value failed!" << std::endl;
         }
         RegCloseKey(hKey);
     }
@@ -490,7 +490,7 @@ void BitMpNo(const json& config) {
     HKEY hKey = OpenCKey(HKEY_CLASSES_ROOT, L".bmp\\ShellNew", KEY_SET_VALUE);
     if (hKey) {
         if (RegDeleteValue(hKey, L"NullFile") != ERROR_SUCCESS) {
-            std::cerr << "Error deleting NullFile value" << std::endl;
+            std::cerr << "Deleting NullFile value failed!" << std::endl;
         }
         RegCloseKey(hKey);
     }
@@ -503,7 +503,7 @@ void RchTxtCMNo(const json& config) {
     HKEY hKey = OpenCKey(HKEY_CLASSES_ROOT, L".rtf\\ShellNew", KEY_SET_VALUE);
     if (hKey) {
         if (RegDeleteValue(hKey, L"NullFile") != ERROR_SUCCESS) {
-            std::cerr << "Error deleting NullFile value" << std::endl;
+            std::cerr << "Deleting NullFile value failed!" << std::endl;
         }
         RegCloseKey(hKey);
     }
@@ -540,7 +540,7 @@ void TbShtCtxNo(const json& config) {
     HKEY hKey = OpenCKey(HKEY_CLASSES_ROOT, L"exefile\\shellex\\ContextMenuHandlers\\Compatibility", KEY_SET_VALUE);
     if (hKey) {
         if (RegSetValueEx(hKey, L"", 0, REG_SZ, (const BYTE*)L"", sizeof(L"")) != ERROR_SUCCESS) {
-            std::cerr << "Error setting default value" << std::endl;
+            std::cerr << "Setting default value failed!" << std::endl;
         }
         RegCloseKey(hKey);
     }
