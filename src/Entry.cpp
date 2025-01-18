@@ -72,6 +72,7 @@ int main()
     }
     else {
         std::cerr << "Getting executable path failed!" << std::endl;
+        std::cerr << "Start the power service in services." << std::endl;
     }
     return 0;
 }
