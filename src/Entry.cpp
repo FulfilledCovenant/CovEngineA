@@ -15,6 +15,7 @@
 #include "CaterTweaks.h"
 #include "SvcTweaks.h"
 #include "RnBat/RnBat.h"
+#include "BGFx/BGF.h"
 #include "ExtTweaks/ExtTweaks.h"
 #include "nlohmann/json.hpp"
 #pragma comment(lib, "Shlwapi.lib") 
@@ -40,40 +41,31 @@ int main()
     if (!ReadConfig(config)) {
         config = DefConfig();
     }
-
+    //
     CurrentConf(config);
-
-    HKEY hKey;
+    //
+    /*HKEY hKey;
     if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SystemRestore", 0, KEY_SET_VALUE, &hKey) == ERROR_SUCCESS) {
         DWORD dwValue = 0;
         RegSetValueEx(hKey, L"RPGlobalInterval", 0, REG_DWORD, (const BYTE*)&dwValue, sizeof(dwValue));
         RegCloseKey(hKey);
-    }
+    }*/
 
-    RnBat();
+    //RnBat();
     //
     //
     // run batch
     // point 1 (the start of entry)
-    std::system("restore.bat");
+    BGFx();
     SimpleTweaks(config);
-    std::system("genPoint.bat");
     ExtraTweaks(config);
-    std::system("genPoint2.bat");
     DoPerfTweaks(config);
-    std::system("genPoint3.bat");
     DoPrivTweaks(config);
-    std::system("genPoint4.bat");
     NetDoTweaks(config);
-    std::system("genPoint5.bat");
     QolTweaks(config);
-    std::system("genPoint6.bat");
     CaterTweaksDo(config);
-    std::system("genPoint7.bat");
     SvcTweaks(config);
-    std::system("genPoint8.bat");
     ExtTwks(config);
-    std::system("genPoint9.bat");
 
     wchar_t szPath[MAX_PATH];
     if (GetModuleFileNameW(NULL, szPath, ARRAYSIZE(szPath))) {
