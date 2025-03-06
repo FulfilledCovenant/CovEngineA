@@ -9,6 +9,8 @@ A windows optimizer.
 
 The descriptions and recommendations in the following table are based on general use cases, the optimal settings for your system might vary depending on your specific hardware, software, and usage patterns. I've tried to include every tweak and it's aspect, however some tweaks may or may not be on the table.
 
+## CovEngineV2 is my new source that exalts this repo.
+
 **Version 1.1.2 includes minor changes, check the release.**
 
 ### If you have any questions, PM me at @4orsake on discord.
